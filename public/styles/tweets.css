@@ -48,7 +48,8 @@ footer {
 
 .tweet-responses i{
   padding: 0 0.2em;
-  color: #4056A1
+  color: #4056A1;
+  cursor: pointer;
 }
 
 .tweet-responses i:hover {
