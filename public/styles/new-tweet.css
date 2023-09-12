@@ -1,0 +1,37 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+form button {
+  background-color: #4056A1;
+  color: white;
+  border: none;
+  padding: 0.3em 0.5em;
+  border-radius: 0.3em;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
+  font-family: Bungee, sans-serif;
+  font-size: 0.8em;
+  padding-top: 0.3em;
+}
+
+form output {
+  display: flex;
+  align-items: center;
+}
+
+form textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.2em solid #545149;
+  resize: none;
+  outline: none;
+  margin-bottom: 0.5em;
+  padding-top: 0.5em;
+  font-size: 0.8em;
+}

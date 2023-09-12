@@ -1,0 +1,17 @@
+.profile-header {
+  height: 520px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 120px;
+  background-color: darkorange;
+  background-image: url(../images/45-degree-fabric-dark.png);
+}
+
+.profile-name {
+  font-family: 'Source Sans 3', sans-serif;
+  color: white;
+  font-size: 1.5em;
+}
