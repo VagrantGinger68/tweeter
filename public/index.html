@@ -39,8 +39,10 @@
     <nav>
       <span class="logo">tweeter</span>
       <div class="new-tweet">
-        <span><strong>Write</strong> a new tweet</span>
-        <i class="fa-solid fa-angles-down arrow"></i>
+        <button id="compose-button">
+          <span><strong>Write</strong> a new tweet</span>
+          <i class="fa-solid fa-angles-down arrow"></i>
+        </button>
       </div>
     </nav>
 
@@ -56,8 +58,11 @@
 
     <!-- Page-specific (main) content here -->
     <main id="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+      <section class="new-tweet" id="new-tweet-container">
+        <span class="error">
+          <i class="fa-solid fa-x"></i>
+          <h4 id="error-message"></h4>
+        </span>
         <form method="POST" action="/tweets" id="new-tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
