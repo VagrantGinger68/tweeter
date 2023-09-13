@@ -7,6 +7,9 @@
 
 $(document).ready(function() {
 
+  $(".error").hide();
+  $("#new-tweet-container").hide();
+
   const renderTweets = function(tweets) {
     $('#tweet-container').empty();
     for (let tweet of tweets) {
@@ -14,7 +17,13 @@ $(document).ready(function() {
       $('#tweet-container').append(newTweet);
     }
   };
-  
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function(tweet) {
     let $tweet = $(`
   <article class="tweet">
@@ -28,7 +37,7 @@ $(document).ready(function() {
       </div>
     </header>
     <div class="tweet-content">
-      ${tweet.content.text}
+      ${escape(tweet.content.text)}
     </div>
     <footer>
       <span>${timeago.format(tweet.created_at)}</span>
@@ -46,12 +55,19 @@ $(document).ready(function() {
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const tweetLength = $("#tweet-text").val().length;
-  
+
     if (!tweetLength) {
-      alert("Please enter a tweet!");
+      $(".error").slideUp("slow", function() {
+        $("#error-message").html("Please enter a tweet!");
+        $(".error").slideDown("slow");
+      });
     } else if (tweetLength > 140) {
-      alert("Tweet is too long! Make it less than 140 characters.");
+      $(".error").slideUp("slow", function() {
+        $("#error-message").html("Tweet is too long! Make sure it is less than 140 characters.");
+        $(".error").slideDown("slow");
+      });
     } else {
+      $(".error").slideUp("slow");
       const newTweet = $(this).serialize();
       $.post("/tweets/", newTweet, function() {
         $("#tweet-text").val("");
@@ -68,4 +84,9 @@ $(document).ready(function() {
   };
 
   loadTweets();
+
+  $("#compose-button").click(function() {
+    $("#new-tweet-container").slideDown("slow");
+    $("#tweet-text").focus();
+  });
 });
