@@ -8,6 +8,7 @@
 $(document).ready(function() {
 
   const renderTweets = function(tweets) {
+    $('#tweet-container').empty();
     for (let tweet of tweets) {
       const newTweet = createTweetElement(tweet);
       $('#tweet-container').append(newTweet);
@@ -45,24 +46,26 @@ $(document).ready(function() {
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const tweetLength = $("#tweet-text").val().length;
-    const maxLength = 140;
-
+  
     if (!tweetLength) {
       alert("Please enter a tweet!");
-    } else if (tweetLength > maxLength) {
+    } else if (tweetLength > 140) {
       alert("Tweet is too long! Make it less than 140 characters.");
     } else {
       const newTweet = $(this).serialize();
-      $.post("/tweets/", newTweet);
+      $.post("/tweets/", newTweet, function() {
+        $("#tweet-text").val("");
+        $(".counter").val(140);
+        loadTweets();
+      });
     }
   });
 
   const loadTweets = function() {
     $.get("/tweets/", function(tweets) {
-      renderTweets(tweets);
+      renderTweets(tweets.reverse());
     });
   };
 
   loadTweets();
-
 });
