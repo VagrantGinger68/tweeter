@@ -13,6 +13,10 @@ form button {
   cursor: pointer;
 }
 
+form button:active {
+  background-color: #2f4076;
+}
+
 form div {
   display: flex;
   justify-content: space-between;

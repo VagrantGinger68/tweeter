@@ -53,5 +53,9 @@ footer {
 }
 
 .tweet-responses i:hover {
-  color: rgb(255,140,0, 0.5);
+  color: rgb(255,140,0);
+}
+
+.tweet-responses i:active {
+  color: rgb(195, 107, 0);
 }
