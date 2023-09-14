@@ -1,13 +1,13 @@
 nav {
   height: 120px;
   width: 100vw;
-  background-color: #4056A1;
   color: #FFFFFF;
   padding: 0 1.5em;
   justify-content: space-between;
   display: flex;
   align-items: center;
-  position: fixed;
+  position: absolute;
+  font-size: 0.8em;
 }
 
 .logo{
@@ -21,7 +21,7 @@ nav {
 }
 
 .arrow {
-  color: darkorange;
+  color: white;
   animation: bounce 2s infinite;
 }
 
@@ -33,3 +33,17 @@ nav {
     transform: translateY(7px);
   }
 }
+
+@media screen and (min-width: 1024px){
+  nav {
+    background-color: #4056A1;
+    background-image: url(../images/45-degree-fabric-dark.png);
+    position:fixed;
+    font-size: 1em;
+  }
+
+  .arrow {
+    color: darkorange;
+  }
+}
+

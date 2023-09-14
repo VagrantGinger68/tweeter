@@ -19,6 +19,8 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans 3', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /*
@@ -32,3 +34,19 @@ body {
   flex-direction: column;
   margin: 0 5%;
  }
+
+
+@media screen and (min-width: 1024px){
+
+  body {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  main {
+    padding: 7em 0;
+    max-width: 50%;
+  }
+}
+

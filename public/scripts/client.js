@@ -7,9 +7,11 @@
 
 $(document).ready(function() {
 
+  //Start with error messages hidden
   $(".error").hide();
   $("#new-tweet-container").hide();
 
+  //Function to render all tweets from database
   const renderTweets = function(tweets) {
     $('#tweet-container').empty();
     for (let tweet of tweets) {
@@ -18,12 +20,14 @@ $(document).ready(function() {
     }
   };
 
+  //Function to make sure the new tweets are safe characters
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  //Template for new tweets
   const createTweetElement = function(tweet) {
     let $tweet = $(`
   <article class="tweet">
@@ -52,6 +56,7 @@ $(document).ready(function() {
     return $tweet;
   };
 
+  //Submit function with error handling
   $("#new-tweet-form").submit(function(event) {
     event.preventDefault();
     const tweetLength = $("#tweet-text").val().length;
@@ -77,6 +82,7 @@ $(document).ready(function() {
     }
   });
 
+  //Loads the tweets with newest on top and oldest on bottom
   const loadTweets = function() {
     $.get("/tweets/", function(tweets) {
       renderTweets(tweets.reverse());
@@ -85,6 +91,7 @@ $(document).ready(function() {
 
   loadTweets();
 
+  //Event handler for nav button
   $("#compose-button").click(function() {
     $("#new-tweet-container").slideToggle("slow", function() {
       $("#tweet-text").focus();
